@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>WHAT's NEXT?</title>
+
+<style>
+	*{ font-size:50px;}
+	body{background-image: url("img2.jpeg");}
+	h1{color:white;}
+	radio{color:white;}
+</style>
+<script>
+function show()
+{
+	event.preventDefault();
+	let name=document.getElementById("name");
+	let job=document.getElementById("job");
+	let ms=document.getElementById("ms");
+	let mba=document.getElementById("mba");
+	let ans=document.getElementById("ans");
+
+	if(name.value=="")
+	{
+		alert("Please enter some value.");
+		ans.innerHTML="";
+		name.focus();
+		return;
+	}
+	else if(name.value.trim()=="")
+	{
+		alert("Name cannot be spaces");
+		ans.innerHTML="";
+		name.value="";
+		name.focus();
+		return;
+	}
+	else if (! name.value.match(/^[A-Za-z ]+$/))
+	{
+
+		alert("Name can be only alphabets");
+		ans.innerHTML="";
+		name.value="";
+		name.focus();
+		return;
+	}
+
+	let choice="";
+	if(job.checked)      choice="Job";
+	else if(ms.checked)  choice="MS";
+	else 		  	choice="MBA";
+
+	let msg="Name=" +name.value + "Choice=" +choice;
+	ans.innerHTML=msg;
+}
+</script>
+</head>
+
+
+<body>
+<center>
+<h1> What's next???</h1>
+<form onsubmit="show()">
+<input type="text" placeholder="Enter Name" id="name"/> 
+<br><br>
+
+<input type="radio" name="c" id="job" checked=true/> JOB
+<input type="radio" name="c" id="ms"/> MS
+<input type="radio" name="c" id="mba"/> MBA
+<br><br>
+<input type="submit"/>
+
+</form>
+
+<h1 id="ans"/>
+</center>
+</body>
+
+
+
+</html>
